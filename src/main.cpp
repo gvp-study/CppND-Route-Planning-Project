@@ -71,9 +71,13 @@ int main(int argc, const char **argv)
     auto display = io2d::output_surface{400, 400, io2d::format::argb32, io2d::scaling::none, io2d::refresh_style::fixed, 30};
     display.size_change_callback([](io2d::output_surface& surface){
         surface.dimensions(surface.display_dimensions());
+        std::cout << "surface.display_dimensions " << surface.display_dimensions() << "\n";
+
     });
     display.draw_callback([&](io2d::output_surface& surface){
         render.Display(surface);
+        std::cout << "Render " << "\n";
+
     });
     display.begin_show();
 }
